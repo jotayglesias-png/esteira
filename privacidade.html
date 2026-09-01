@@ -11,40 +11,53 @@
 <div class="wrap">
   <header class="site">
     <a class="brand" href="./">Esteira <span>· automação de publicação no YouTube</span></a>
+    <a class="lang" href="privacy.html">English version</a>
   </header>
 
   <h1>Política de Privacidade</h1>
-  <p class="meta">Última atualização: 28 de agosto de 2026</p>
+  <p class="meta">Última atualização: 1 de setembro de 2026</p>
 
   <p class="lead">A Esteira é uma ferramenta de uso privado. Ela opera exclusivamente sobre canais do YouTube pertencentes ao próprio operador, e não coleta dados de terceiros.</p>
 
   <h2>1. Quem opera o aplicativo</h2>
   <p>O aplicativo "Esteira" é operado por João Prata, que também é o titular das contas Google e dos canais do YouTube nos quais a ferramenta atua. Contato: <a href="mailto:jotayglesias@gmail.com">jotayglesias@gmail.com</a>.</p>
+  <p>O aplicativo não tem cadastro, não tem interface pública e não é oferecido a terceiros. <strong>Nenhum usuário além do operador se autentica no aplicativo</strong>: as únicas contas Google que passam pelo fluxo de consentimento OAuth são as do próprio operador, titulares dos canais em que a ferramenta atua.</p>
 
   <h2>2. Dados que o aplicativo acessa</h2>
-  <p>Mediante autorização explícita da conta Google no fluxo de consentimento OAuth, o aplicativo acessa apenas dados das contas do YouTube que concederam essa autorização:</p>
+  <p>Mediante autorização explícita da conta Google do operador no fluxo de consentimento OAuth, o aplicativo solicita três escopos das APIs do YouTube, e nada além deles:</p>
   <ul>
-    <li><code>youtube.upload</code> — envio de vídeos ao canal autorizado;</li>
-    <li><code>youtube.force-ssl</code> — leitura e edição de vídeos, playlists, miniaturas, legendas e comentários do canal autorizado;</li>
-    <li><code>youtube.readonly</code> — leitura da lista de vídeos e das informações do canal autorizado;</li>
-    <li><code>yt-analytics.readonly</code> — leitura de relatórios de desempenho do canal autorizado.</li>
+    <li><code>https://www.googleapis.com/auth/youtube.upload</code> — enviar vídeos aos canais do operador;</li>
+    <li><code>https://www.googleapis.com/auth/youtube</code> — gerir os vídeos e as miniaturas dos canais do operador (título, descrição, tags, miniatura, agendamento) e ler os dados desses mesmos canais: lista de vídeos, conteúdo das playlists e estatísticas públicas do canal;</li>
+    <li><code>https://www.googleapis.com/auth/youtube.force-ssl</code> — publicar comentários nos vídeos dos próprios canais do operador.</li>
   </ul>
-  <p>O aplicativo não acessa e-mail, contatos, arquivos, agenda, localização ou qualquer outro dado da Conta do Google fora dos escopos acima.</p>
+  <p>O aplicativo não solicita escopos de relatórios do YouTube Analytics. Também não acessa e-mail, contatos, arquivos, agenda, localização ou qualquer outro dado da Conta do Google fora dos escopos acima.</p>
 
   <h2>3. Para que os dados são usados</h2>
-  <p>Os dados são usados apenas para executar as tarefas que o operador solicita: publicar vídeos, preencher e corrigir metadados, organizar playlists, responder comentários e gerar relatórios internos de desempenho dos próprios canais.</p>
+  <p>Os dados são usados apenas para executar as tarefas que o operador solicita nos seus próprios canais:</p>
+  <ul>
+    <li>enviar vídeos já produzidos;</li>
+    <li>preencher ou corrigir título, descrição, tags, miniatura e agendamento;</li>
+    <li>ler a lista de vídeos, o conteúdo das playlists e as estatísticas públicas do canal, para controle interno de produção;</li>
+    <li>publicar um comentário nos vídeos do próprio canal, quando o operador assim determina.</li>
+  </ul>
+  <p>O aplicativo <strong>não cria nem altera playlists</strong> — o acesso a playlists é somente de leitura. O aplicativo <strong>não manipula legendas</strong>. O aplicativo não comenta, não responde e não interage em vídeos ou canais de terceiros.</p>
   <p>Os dados <strong>não</strong> são vendidos, alugados, cedidos, usados para publicidade, usados para treinar modelos de inteligência artificial, nem compartilhados com terceiros para qualquer finalidade.</p>
 
   <h2>4. Armazenamento e retenção</h2>
-  <p>Os tokens de acesso e de atualização fornecidos pelo Google ficam armazenados em ambiente privado controlado pelo operador, com acesso restrito, e são usados apenas para autenticar as chamadas às APIs do YouTube. Metadados e métricas eventualmente armazenados servem apenas ao histórico operacional dos próprios canais e podem ser apagados a qualquer momento pelo operador.</p>
-  <p>Quando uma autorização é revogada, os tokens correspondentes deixam de funcionar e são descartados.</p>
+  <p>O aplicativo armazena apenas duas coisas:</p>
+  <ul>
+    <li><strong>Tokens OAuth de atualização (refresh tokens)</strong> emitidos pelo Google para as contas do operador. Ficam em arquivo no servidor privado do operador, com permissão de sistema de arquivos <code>0600</code> (leitura e escrita apenas pelo dono do processo), e são usados exclusivamente para autenticar as chamadas às APIs do YouTube.</li>
+    <li><strong>Estatísticas públicas dos canais do próprio operador</strong> — número de inscritos, visualizações, contagem de vídeos, títulos e datas de publicação — gravadas em um arquivo JSON local que é sobrescrito a cada execução, servindo apenas ao acompanhamento interno de produção.</li>
+  </ul>
+  <p>O aplicativo <strong>não</strong> armazena dados de espectadores, dados pessoais de terceiros, comentários de terceiros nem conteúdo de vídeos de terceiros. Não há banco de dados de usuários, porque não há usuários além do operador.</p>
+  <p>Quando uma autorização é revogada, os tokens correspondentes deixam de funcionar e são descartados. Os arquivos locais podem ser apagados pelo operador a qualquer momento.</p>
 
   <h2>5. Uso das APIs do YouTube</h2>
   <p>Este aplicativo usa os Serviços de API do YouTube. Ao autorizá-lo, aplicam-se os <a href="https://www.youtube.com/t/terms" rel="noopener">Termos de Serviço do YouTube</a> e a <a href="https://policies.google.com/privacy" rel="noopener">Política de Privacidade do Google</a>.</p>
   <p>O uso que a Esteira faz das informações recebidas das APIs do Google obedece à <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener">Política de Dados do Usuário dos Serviços de API do Google</a>, incluindo os requisitos de uso limitado.</p>
 
   <h2>6. Como revogar o acesso</h2>
-  <p>A autorização concedida a este aplicativo pode ser revogada a qualquer momento, sem aviso prévio, em <a href="https://myaccount.google.com/permissions" rel="noopener">myaccount.google.com/permissions</a>. A revogação interrompe imediatamente qualquer acesso do aplicativo aos dados daquela conta.</p>
+  <p>A autorização concedida a este aplicativo pode ser revogada a qualquer momento, sem aviso prévio, em <a href="https://myaccount.google.com/permissions" rel="noopener">https://myaccount.google.com/permissions</a>. A revogação interrompe imediatamente qualquer acesso do aplicativo aos dados daquela conta.</p>
 
   <h2>7. Segurança</h2>
   <p>O acesso ao ambiente onde a ferramenta é executada é restrito ao operador. As credenciais não são compartilhadas nem versionadas em repositórios públicos.</p>
@@ -61,6 +74,7 @@
       <a href="./">Início</a>
       <a href="privacidade.html">Privacidade</a>
       <a href="termos.html">Termos</a>
+      <a href="privacy.html">English</a>
     </nav>
   </footer>
 </div>
